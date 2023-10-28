@@ -1,0 +1,145 @@
+xml
+-------------------------------------------------------------------------------------
+<?xml version="1.0" encoding="utf-8"?>
+<alberghi>
+    <albergo>
+        <comune istat="090003">
+        ALGHERO
+            <classe nome="paolo"></classe>
+        </comune>
+        <provincia sigla="SS">SASSARI</provincia>
+        <regione>Sardegna</regione>
+        <idfeature >278.000000000</idfeature>
+        <nome >ALGHERO DREAM</nome>
+        <tipo >Strutture ricettive</tipo>
+        <link_scheda>www.algherodream.it</link_scheda>
+        <indirizzo >Viale Europa, 71</indirizzo>
+        <stelle>0</stelle>
+        <tipo_struttura>Bed and breakfast</tipo_struttura>
+        <do_y>40.577814415</do_y>
+        <do_x>8.31567553000008</do_x>
+    </albergo>
+
+    <albergo>
+        <comune istat="090003">ALGHERO
+            <classe nome="paolo"></classe>
+        </comune>
+        <provincia sigla="SS" >SASSARI</provincia>
+        <regione>Sardegna</regione>
+        <idfeature >364.000000000</idfeature>
+        <nome >ALGHERO</nome>
+        <tipo >Strutture ricettive</tipo>
+        <link_scheda >Non esistente</link_scheda>
+        <indirizzo >"Localitࠃarrebuffas"</indirizzo>
+        <stelle >0</stelle>
+        <tipo_struttura >Bed and breakfast</tipo_struttura>
+        <do_y >40.558210273</do_y>
+        <do_x >8.32238082800006</do_x>
+    </albergo>
+
+    <albergo>
+        <comune istat="090003">ALGHERO
+            <classe nome="paolo"></classe>
+        </comune>
+        <provincia sigla="SS">SASSARI</provincia>
+        <regione>Sardegna</regione>
+        <idfeature>370.000000000</idfeature>
+        <nome >ARIA</nome>
+        <tipo>Strutture ricettive</tipo>
+        <link_scheda >Non esistente</link_scheda>
+        <indirizzo >Via Vittorio Emanuele, 171</indirizzo>
+        <stelle >0</stelle>
+        <tipo_struttura >Bed and breakfast</tipo_struttura>
+        <do_y >40.5625881710001</do_y>
+        <do_x >8.32373246100008</do_x>
+    </albergo>
+
+    <albergo>
+        <comune istat="090003">ALGHERO
+            <classe nome="paolo"></classe>
+        </comune>
+        <provincia sigla="SS">SASSARI</provincia>
+        <regione >Sardegna</regione>
+        <idfeature >372.000000000</idfeature>
+        <nome>ALESSI</nome>
+        <tipo >Strutture ricettive</tipo>
+        <link_scheda >Non esistente</link_scheda>
+        <indirizzo >Via Mazzini, 174</indirizzo>
+        <stelle >0</stelle>
+        <tipo_struttura >Bed and breakfast</tipo_struttura>
+        <do_y>40.5616494240001</do_y>
+        <do_x>8.32416335500005</do_x>
+    </albergo>
+</alberghi>
+
+-------------------------------------------------------------------------------------
+dtd
+-------------------------------------------------------------------------------------
+<!DOCTYPE alberghi [
+    <!ELEMENT alberghi (albergo+)>
+    <!ELEMENT albergo (comune, provincia, regione, idfeature, nome, tipo, link_scheda, indirizzo, stelle, tipo_struttura, do_y, do_x)>
+    <!ELEMENT comune (#PCDATA | classe)*>
+    <!ATTLIST comune istat CDATA #REQUIRED>
+    <!ELEMENT classe EMPTY>
+    <!ATTLIST classe nome CDATA #REQUIRED>
+    <!ELEMENT provincia (#PCDATA)>
+    <!ATTLIST provincia sigla CDATA #REQUIRED>
+    <!ELEMENT regione (#PCDATA)>
+    <!ELEMENT idfeature (#PCDATA)>
+    <!ELEMENT nome (#PCDATA)>
+    <!ELEMENT tipo (#PCDATA)>
+    <!ELEMENT link_scheda (#PCDATA)>
+    <!ELEMENT indirizzo (#PCDATA)>
+    <!ELEMENT stelle (#PCDATA)>
+    <!ELEMENT tipo_struttura (#PCDATA)>
+    <!ELEMENT do_y (#PCDATA)>
+    <!ELEMENT do_x (#PCDATA)>
+]>
+-------------------------------------------------------------------------------------
+xsd
+-------------------------------------------------------------------------------------
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="alberghi">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="albergo" type="albergoType" minOccurs="1" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="albergoType">
+    <xs:sequence>
+      <xs:element name="comune" type="comuneType"/>
+      <xs:element name="provincia" type="provinciaType"/>
+      <xs:element name="regione" type="xs:string"/>
+      <xs:element name="idfeature" type="xs:decimal"/>
+      <xs:element name="nome" type="xs:string"/>
+      <xs:element name="tipo" type="xs:string"/>
+      <xs:element name="link_scheda" type="xs:string"/>
+      <xs:element name="indirizzo" type="xs:string"/>
+      <xs:element name="stelle" type="xs:integer"/>
+      <xs:element name="tipo_struttura" type="xs:string"/>
+      <xs:element name="do_y" type="xs:decimal"/>
+      <xs:element name="do_x" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="comuneType" mixed="true">
+    <xs:sequence>
+      <xs:element name="classe" type="classeType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="istat" type="xs:string" use="required"/>
+  </xs:complexType>
+    
+  <xs:complexType name="classeType">
+    <xs:attribute name="nome" type="xs:string" use="required"/>
+  </xs:complexType>
+
+        <xs:complexType name="provinciaType" type="xs:string">
+            <xs:attribute name="sigla" type="xs:string" use="required"/>
+        </xs:complexType>
+</xs:schema>
+-------------------------------------------------------------------------------------
+xsl
+-------------------------------------------------------------------------------------
