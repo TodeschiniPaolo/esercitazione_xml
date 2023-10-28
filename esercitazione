@@ -136,10 +136,39 @@ xsd
     <xs:attribute name="nome" type="xs:string" use="required"/>
   </xs:complexType>
 
-        <xs:complexType name="provinciaType" type="xs:string">
+        <xs:complexType name="provinciaType" mixed="true">
             <xs:attribute name="sigla" type="xs:string" use="required"/>
         </xs:complexType>
 </xs:schema>
 -------------------------------------------------------------------------------------
 xsl
 -------------------------------------------------------------------------------------
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+  <xsl:template match="/">
+    <html>
+      <head>
+        <title>Alberghi sardi</title>
+      </head>
+      <body>
+        <h2>Alberghi</h2>
+        <xsl:apply-templates select="alberghi/albergo"/>
+      </body>
+    </html>
+  </xsl:template>
+
+  <xsl:template match="albergo">
+    <div style="border: 1px solid #000; margin-bottom: 10px; padding: 10px;">
+      <h3><xsl:value-of select="nome"/></h3>
+      <p><strong>Location:</strong> <xsl:value-of select="comune"/>, <xsl:value-of select="provincia"/></p>
+      <p><strong>Region:</strong> <xsl:value-of select="regione"/></p>
+      <p><strong>Type:</strong> <xsl:value-of select="tipo"/></p>
+      <p><strong>Address:</strong> <xsl:value-of select="indirizzo"/></p>
+      <p><strong>Stars:</strong> <xsl:value-of select="stelle"/></p>
+      <p><strong>Coordinates:</strong> (<xsl:value-of select="do_y"/>, <xsl:value-of select="do_x"/>)</p>
+    </div>
+  </xsl:template>
+
+</xsl:stylesheet>
+
