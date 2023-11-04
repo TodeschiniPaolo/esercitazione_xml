@@ -22,7 +22,7 @@ xml
 
     <albergo>
         <comune istat="090003">ALGHERO
-            <classe nome="paolo"></classe>
+            <classe nome="zini"></classe>
         </comune>
         <provincia sigla="SS" >SASSARI</provincia>
         <regione>Sardegna</regione>
@@ -39,7 +39,7 @@ xml
 
     <albergo>
         <comune istat="090003">ALGHERO
-            <classe nome="paolo"></classe>
+            <classe nome="champa"></classe>
         </comune>
         <provincia sigla="SS">SASSARI</provincia>
         <regione>Sardegna</regione>
@@ -56,7 +56,7 @@ xml
 
     <albergo>
         <comune istat="090003">ALGHERO
-            <classe nome="paolo"></classe>
+            <classe nome="volpi"></classe>
         </comune>
         <provincia sigla="SS">SASSARI</provincia>
         <regione >Sardegna</regione>
